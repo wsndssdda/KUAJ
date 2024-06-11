@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFF5E1; /* 暖色系背景 */
+        }
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .banner-container {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+        .banner {
+            width: 100%;
+            height: auto;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px;
+        }
+        .product-box {
+            border: 1px solid #ddd;
+            padding: 10px;
+            width: 30%;
+            text-align: center;
+            background-color: #FFF0D9; /* 暖色系背景 */
+        }
+        .product-box img {
+            max-width: 100%;
+        }
+        .product-name {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .product-info {
+            margin: 5px 0;
+        }
+        .buy-now {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .buy-now:hover {
+            background-color: #218838;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .form-group {
+            margin: 10px 0;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .pay-now {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .pay-now:hover {
+            background-color: #218838;
+        }
+        .description {
+            text-align: center;
+            margin: 20px;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Add Banner Image and Navbar -->
+    <div class="banner-container">
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="faq.html">FAQ</a>
+        </div>
+        <img src="banner.jpg" alt="Banner" class="banner">
+    </div>
+
+    <div class="container">
+        <div class="product-box">
+            <img src="product1.jpg" alt="Timeless Elegance - Ladies' Mechanical Watch">
+            <div class="product-name">Timeless Elegance - Ladies' Mechanical Watch</div>
+            <div class="product-info">Quantity Available: 10</div>
+            <div class="product-info">Price: 29.9 USDT / 257 TRX</div>
+            <a href="#" class="buy-now" onclick="openModal('Timeless Elegance - Ladies\' Mechanical Watch', 10, '29.9 USDT / 257 TRX')">BUY NOW</a>
+        </div>
+        <div class="product-box">
+            <img src="product3.jpg" alt="Elegant Moissanite Ring">
+            <div class="product-name">Elegant Moissanite Ring</div>
+            <div class="product-info">Quantity Available: 5</div>
+            <div class="product-info">Price: 122 USDT / 1303 TRX</div>
+            <a href="#" class="buy-now" onclick="openModal('Elegant Moissanite Ring', 5, '122 USDT / 1303 TRX')">BUY NOW</a>
+        </div>
+        <div class="product-box">
+            <img src="product2.jpg" alt="Handcrafted Beaded Bracelet">
+            <div class="product-name">Handcrafted Beaded Bracelet</div>
+            <div class="product-info">Quantity Available: 8</div>
+            <div class="product-info">Price: 39 USDT / 334 TRX</div>
+            <a href="#" class="buy-now" onclick="openModal('Handcrafted Beaded Bracelet', 8, '39 USDT / 334 TRX')">BUY NOW</a>
+        </div>
+    </div>
+
+    <div class="description">
+        Products are updated irregularly, supporting cryptocurrency payments. This is a side project by an engineering student. We use UPS for shipping, and all orders are shipped from Germany.
+    </div>
+
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Payment Information</h2>
+            <div class="form-group">
+                <label for="productName">Product Name</label>
+                <input type="text" id="productName" name="productName" readonly>
+            </div>
+            <div class="form-group">
+                <label for="contactName">Contact Name</label>
+                <input type="text" id="contactName" name="contactName">
+            </div>
+            <div class="form-group">
+                <label for="contactInfo">Contact Info</label>
+                <input type="text" id="contactInfo" name="contactInfo">
+            </div>
+            <div class="form-group">
+                <label for="zipCode">Zip Code</label>
+                <input type="text" id="zipCode" name="zipCode">
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="paymentAmount">Payment Amount</label>
+                <input type="text" id="paymentAmount" name="paymentAmount" readonly>
+            </div>
+            <h3>Scan to Pay</h3>
+            <img src="QR core.png" alt="Payment QR Code" style="width: 100%;">
+            <p>Or send to wallet address: <strong>TJYsjVriLsgR1uCYmVKApQDcUMHGYfFeAZ</strong></p>
+            <a href="#" class="pay-now" onclick="submitOrder()">Confirm Payment</a>
+        </div>
+    </div>
+
+    <script>
+        function openModal(productName, productQuantity, productPrice) {
+            document.getElementById('productName').value = productName;
+            document.getElementById('paymentAmount').value = productPrice;
+            document.getElementById('paymentModal').style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById('paymentModal').style.display = "none";
+        }
+
+        function submitOrder() {
+            var productName = document.getElementById('productName').value;
+            var contactName = document.getElementById('contactName').value;
+            var contactInfo = document.getElementById('contactInfo').value;
+            var zipCode = document.getElementById('zipCode').value;
+            var address = document.getElementById('address').value;
+            var paymentAmount = document.getElementById('paymentAmount').value;
+
+            // Add code to submit order information, such as using AJAX to send data to the server
+            console.log('Order Information:');
+            console.log('Product Name:', productName);
+            console.log('Contact Name:', contactName);
+            console.log('Contact Info:', contactInfo);
+            console.log('Zip Code:', zipCode);
+            console.log('Address:', address);
+            console.log('Payment Amount:', paymentAmount);
+
+            closeModal();
+            alert('Order has been submitted. Please complete the payment.');
+        }
+    </script>
+
+</body>
+</html>

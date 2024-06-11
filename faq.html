@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFF5E1; /* 暖色系背景 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            width: 100%;
+            z-index: 1000;
+            position: fixed;
+            top: 0;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .faq-container {
+            margin-top: 80px; /* To avoid overlap with the fixed navbar */
+            text-align: left;
+            padding: 20px;
+            background-color: #FFF0D9; /* 暖色系背景 */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        .faq-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        .faq-container p {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #666;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        .faq-question {
+            font-weight: bold;
+            color: #333;
+        }
+        .faq-answer {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="faq.html">FAQ</a>
+    </div>
+
+    <div class="faq-container">
+        <h2>Frequently Asked Questions (FAQ)</h2>
+        <div class="faq-item">
+            <p class="faq-question">1. Do you accept cryptocurrency payments?</p>
+            <p class="faq-answer">Yes, we accept payments in various cryptocurrencies including USDT and TRX.</p>
+        </div>
+        <div class="faq-item">
+            <p class="faq-question">2. What shipping service do you use?</p>
+            <p class="faq-answer">We ship all orders using UPS International Express.</p>
+        </div>
+        <div class="faq-item">
+            <p class="faq-question">3. Where do you ship from?</p>
+            <p class="faq-answer">All orders are shipped from Germany.</p>
+        </div>
+        <div class="faq-item">
+            <p class="faq-question">4. How will I receive my tracking number?</p>
+            <p class="faq-answer">The tracking number will be sent to you via SMS.</p>
+        </div>
+        <div class="faq-item">
+            <p class="faq-question">5. What should I do if I have questions?</p>
+            <p class="faq-answer">If you have any questions, please contact our customer service for assistance.</p>
+        </div>
+        <div class="faq-item">
+            <p class="faq-question">6. About Us</p>
+            <p class="faq-answer">We are a startup founded by an engineering student with a passion for cryptocurrency trading and web development. This website was created as a hobby project. The products listed on the homepage are updated periodically.</p>
+        </div>
+    </div>
+
+</body>
+</html>
