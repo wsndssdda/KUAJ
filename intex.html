@@ -14,7 +14,7 @@
         .navbar {
             background-color: rgba(0, 0, 0, 0.7);
             overflow: hidden;
-            position: absolute;
+            position: fixed; /* Fix navbar at the top */
             top: 0;
             width: 100%;
             z-index: 1000;
@@ -35,6 +35,7 @@
             position: relative;
             text-align: center;
             color: white;
+            margin-top: 50px; /* Add margin to avoid overlap with fixed navbar */
         }
         .banner {
             width: 100%;
@@ -141,12 +142,13 @@
 <body>
 
     <!-- Add Banner Image and Navbar -->
-    <div class="banner-container">
-        <div class="navbar">
-            <a href="index.html">Home</a>
-            <a href="contact.html">Contact Us</a>
-            <a href="faq.html">FAQ</a>
-        </div>
+    <div class="navbar">
+        <a href="#top">Home</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="faq.html">FAQ</a>
+    </div>
+
+    <div class="banner-container" id="top">
         <img src="banner.jpg" alt="Banner" class="banner">
     </div>
 
